@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Carousel with Login Form</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background:  rgba(202, 164, 194, 0.863);
+            background-image: url(./asset/images/purple1.gif);
             overflow: hidden;
         }
 
@@ -18,7 +20,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 900px;
+            width: 800px;
             height: 500px;
             background: #000;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -97,8 +99,29 @@
         .login-container .btn:hover {
             background-color: #380080;
         }
+
+        .fancybox-custom .fancybox-content {
+            background: #000;
+            color: #fff;
+        }
+
+        .forgot-password-link {
+            color: #917daa;
+        }
+        
+
+        .fancybox-custom .fancybox-content {
+            background: #000;
+            color: #fff;
+        }
+
+        #forgotPasswordModal {
+            background-color: #000;
+            color: #fff;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="carousel-container">
@@ -112,19 +135,19 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="./asset/images/gif5.gif" alt="Image 1">
+                        <img src="./asset/images/gif5.gif" alt="Image 1" />
                     </div>
                     <div class="carousel-item">
-                        <img src="./asset/images/gif2.gif" alt="Image 2">
+                        <img src="./asset/images/gif2.gif" alt="Image 2" />
                     </div>
                     <div class="carousel-item">
-                        <img src="./asset/images/gif5.gif" alt="Image 3">
+                        <img src="./asset/images/gif5.gif" alt="Image 3" />
                     </div>
                     <div class="carousel-item">
-                        <img src="./asset/images/gif2.gif" alt="Image 4">
+                        <img src="./asset/images/gif2.gif" alt="Image 4" />
                     </div>
                     <div class="carousel-item">
-                        <img src="./asset/images/gif5.gif" alt="Image 5">
+                        <img src="./asset/images/gif5.gif" alt="Image 5" />
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
@@ -144,15 +167,21 @@
                 <form id="loginForm" novalidate>
                     <div class="form-group">
                         <label for="username">Username:</label>
-                        <input type="text" class="form-control" id="username" required pattern="[a-zA-Z]+" title="Username should contain only alphabets">
+                        <input type="text" class="form-control" id="username" required pattern="[a-zA-Z]+"
+                            title="Username should contain only alphabets" />
                         <div class="invalid-feedback">Please enter a valid username.</div>
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="Password should be at least 8 characters long and contain at least one letter and one number">
+                        <input type="password" class="form-control" id="password" required
+                            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                            title="Password should be at least 8 characters long and contain at least one letter and one number" />
                         <div class="invalid-feedback">Please enter a valid password.</div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a href="#forgotPasswordModal" class="forgot-password-link" data-fancybox>Forgot Password?</a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -162,52 +191,54 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <script>
-        var carousel = document.getElementById('myCarousel');
+        var carousel = document.getElementById("myCarousel");
         var carouselInstance = new bootstrap.Carousel(carousel, {
-            interval: 3000
+            interval: 3000,
         });
 
-        var loginForm = document.getElementById('loginForm');
-        var usernameInput = document.getElementById('username');
-        var passwordInput = document.getElementById('password');
+        var loginForm = document.getElementById("loginForm");
+        var usernameInput = document.getElementById("username");
+        var passwordInput = document.getElementById("password");
 
-        loginForm.addEventListener('submit', function(event) {
+        loginForm.addEventListener("submit", function (event) {
             event.preventDefault();
             event.stopPropagation();
             if (loginForm.checkValidity()) {
                 $.fancybox.open({
-                    src: '#successModal',
-                    type: 'inline',
+                    src: "#successModal",
+                    type: "inline",
                     opts: {
                         modal: true,
                         touch: false,
                         autoFocus: false,
-                        baseClass: 'fancybox-custom',
+                        baseClass: "fancybox-custom",
                         margin: [20, 20, 40, 20],
                         infobar: false,
                         toolbar: false,
                         smallBtn: true,
-                        afterClose: function() {
-                            window.location.href = 'https://www.g2techsoft.com/';
-                        }
-                    }
+                        afterClose: function () {
+                            window.location.href = "https://www.g2techsoft.com/";
+                        },
+                    },
                 });
             }
-            loginForm.classList.add('was-validated');
+            loginForm.classList.add("was-validated");
         });
     </script>
 
-    <style>
-        .fancybox-custom .fancybox-content {
-            background: #000;
-            color: #fff;
-        }
-    </style>
-
-    <div id="successModal" style="display: none;">
+    <div id="successModal" style="display: none">
         <h5>Login Successful!</h5>
         <p>Welcome back!</p>
         <button class="btn btn-secondary" data-fancybox-close>Close</button>
     </div>
+    <div id="forgotPasswordModal" style="display: none">
+        <h5>Forgot Password</h5>
+        <p>
+            An email has been sent to your registered email address with
+            instructions to reset your password.
+        </p>
+        <button class="btn btn-secondary" data-fancybox-close>Close</button>
+    </div>
 </body>
+
 </html>
