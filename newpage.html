@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>New Page</title>
+    <style>
+        body {
+            background-image: url("./asset/images/window.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .text-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            color: white;
+            mix-blend-mode: difference;
+            animation: horizontalWipe 2s ease-in-out forwards;
+        }
+
+        @keyframes horizontalWipe {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-container">
+        <h1>Welcome to the New Page!</h1>
+    </div>
+</body>
+
+</html>

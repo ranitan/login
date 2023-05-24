@@ -109,7 +109,7 @@
         .forgot-password-link {
             color: #917daa;
         }
-        
+
 
         .fancybox-custom .fancybox-content {
             background: #000;
@@ -217,15 +217,32 @@
                         infobar: false,
                         toolbar: false,
                         smallBtn: true,
-                        afterClose: function () {
-                            window.location.href = "https://www.g2techsoft.com/";
-                        },
                     },
                 });
             }
             loginForm.classList.add("was-validated");
         });
     </script>
+    <script>
+        var carousel = document.getElementById("myCarousel");
+        var carouselInstance = new bootstrap.Carousel(carousel, {
+            interval: 3000,
+        });
+
+        var loginForm = document.getElementById("loginForm");
+        var usernameInput = document.getElementById("username");
+        var passwordInput = document.getElementById("password");
+
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (loginForm.checkValidity()) {
+                window.location.href = "newpage.html";
+            }
+            loginForm.classList.add("was-validated");
+        });
+    </script>
+
 
     <div id="successModal" style="display: none">
         <h5>Login Successful!</h5>
